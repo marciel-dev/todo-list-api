@@ -1,0 +1,70 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/todo_items":
+    get:
+      summary: Lista tarefas com filtros Ransack
+      tags:
+      - TodoItems
+      parameters:
+      - name: q
+        in: query
+        schema:
+          type: object
+          properties:
+            status_eq:
+              type: string
+            title_cont:
+              type: string
+            description_cont:
+              type: string
+            due_date_eq:
+              type: string
+              format: date
+            created_at_gteq:
+              type: string
+              format: date
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Cria uma nova tarefa
+      tags:
+      - TodoItems
+      parameters: []
+      responses:
+        '201':
+          description: Criado
+        '422':
+          description: Erro de validação
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                description:
+                  type: string
+                status:
+                  type: string
+                  enum:
+                  - pending
+                  - done
+                  - cancelled
+                  - late
+                due_date:
+                  type: string
+                  format: date
+              required:
+              - title
+              - status
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com

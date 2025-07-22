@@ -1,0 +1,165 @@
+{
+	"info": {
+		"_postman_id": "52c3682b-3250-46f1-9e55-660357e68e05",
+		"name": "TodoItems API",
+		"description": "Coleção de testes para a API de TodoItems",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1786537",
+		"_collection_link": "https://interstellar-comet-872995.postman.co/workspace/MBA~eccce9db-0140-4058-acd3-85eaac5db9fe/collection/1786537-52c3682b-3250-46f1-9e55-660357e68e05?action=share&source=collection_link&creator=1786537"
+	},
+	"item": [
+		{
+			"name": "Listar todos (Ransack)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3030/api/v1/todo_items",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3030",
+					"path": [
+						"api",
+						"v1",
+						"todo_items"
+					],
+					"query": [
+						{
+							"key": "q[status_eq]",
+							"value": "pending",
+							"disabled": true
+						},
+						{
+							"key": "q[title_eq]",
+							"value": "Lavar o carro atualizado",
+							"disabled": true
+						},
+						{
+							"key": "q[description_eq]",
+							"value": "Com cera e tudo",
+							"disabled": true
+						},
+						{
+							"key": "q[due_date_eq]",
+							"value": "2025-07-22",
+							"disabled": true
+						},
+						{
+							"key": "q[created_at]",
+							"value": "2025-07-21",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Criar tarefa",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"todo_item\": {\n    \"title\": \"Lavar o carro\",\n    \"description\": \"Com cera e tudo\",\n    \"status\": \"pending\",\n    \"due_date\": \"2025-07-22\"\n  }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3030/api/v1/todo_items",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3030",
+					"path": [
+						"api",
+						"v1",
+						"todo_items"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar tarefa por ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3030/api/v1/todo_items/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3030",
+					"path": [
+						"api",
+						"v1",
+						"todo_items",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Atualizar tarefa",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"todo_item\": {\n    \"title\": \"Lavar o carro atualizado\",\n    \"status\": \"done\"\n  }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3030/api/v1/todo_items/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3030",
+					"path": [
+						"api",
+						"v1",
+						"todo_items",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cancelar tarefa (DELETE lógico)",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3030/api/v1/todo_items/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3030",
+					"path": [
+						"api",
+						"v1",
+						"todo_items",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
